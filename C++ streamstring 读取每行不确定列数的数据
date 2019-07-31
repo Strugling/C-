@@ -1,0 +1,44 @@
+我们在使用c++读取数据时，经常会遇到数据列数不确定，存在变化的情况。这种情况下，我们可以使用stringstream 函数进行读取
+ std::string filename = Path;
+std::ifstream infile;
+infile.open(filename.c_str());
+if (!infile.is_open())
+{
+std::cout << "文件打开失败！" << std::endl;
+return false;
+}
+        string Line;
+while (getline(infile, Line))
+{
+stringstream ss(Line);
+string tmp;
+std::vector v;
+while (ss>>tmp)
+{
+v.push_back(tmp);
+}
+continue;
+}
+infile.close();
+如果确定分隔符，则可以用下面的方法
+        std::string filename = Path;
+std::ifstream infile;
+infile.open(filename.c_str());
+if (!infile.is_open())
+{
+std::cout << "文件打开失败！" << std::endl;
+return false;
+}
+        string Line;
+while (getline(infile, Line))
+{
+stringstream ss(Line);
+string tmp;
+std::vector v;
+while (getline(ss,tmp,","))
+{
+v.push_back(tmp);
+}
+continue;
+}
+infile.close();
